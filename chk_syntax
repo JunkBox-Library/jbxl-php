@@ -2,6 +2,7 @@
 
 FLS=`find . -name "*.php"` 
 for FL in $FLS ; do
+  nkf --overwrite --oc=UTF-8 $FL
   php -l $FL
 done
 
