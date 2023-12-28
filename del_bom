@@ -1,0 +1,14 @@
+#/bin/bash
+
+FLS=`find . -name "*.php"` 
+for FL in $FLS ; do
+  nkf --overwrite --oc=UTF-8 $FL
+done
+
+FLS=`find . -name "*.html"` 
+for FL in $FLS ; do
+  nkf --overwrite --oc=UTF-8 $FL
+done
+
+OWN=`ls -ld .. | awk -F" " '{print $3"."$4}'`
+chown -R $OWN . 
