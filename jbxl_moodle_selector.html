@@ -5,11 +5,11 @@
   <table width="90%" cellpadding="2" cellspacing="1" align="center" border="2" bordercolor="#FFFFFF" bgcolor="#F8F8F8">
     <tr height=26 style="background-color: #E0E0E0">
       <td style="width:45%; font-size:120%; text-align:center">
-        <b><?php echo $this->title_left;?></b>
+        <div style="font-weight:bold;"><?php echo $this->title_left;?></div>
       </td>
       <td style="width:10%"></td>
       <td style="width:45%; font-size:120%; text-align:center">
-        <b><?php echo $this->title_right;?></b>
+        <div style="font-weight:bold;"><?php echo $this->title_right;?></div>
       </td>
     </tr>
 
@@ -61,7 +61,7 @@
   <div align=center>
     <ul>
       <?php foreach($this->errorMsg as $mesg) {?>
-        <li><font color="#f02022"><b><?php echo $mesg;?></b></font></li>
+        <li><font color="#f02022"><div style="font-weight:bold;"><?php echo $mesg;?></div></font></li>
       <?php }?>
     </ul>
   </div>
