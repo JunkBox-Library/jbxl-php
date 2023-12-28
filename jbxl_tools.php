@@ -34,7 +34,6 @@ define('JBXL_TOOLS_VER', $jbxl_tools_ver);
 //
 *****************************************************************************************/
 
-
 //
 // IPアドレスを "," または半角空白で区切って記述した文字列から，有効なIPアドレス
 // とサブネットを8bitずつ取り出す．CIDER対応
@@ -147,7 +146,6 @@ function  jbxl_match_ipaddr($ip, array $ipaddr_subnets)
     }
     return false;
 }
-
 
 
 $JBXLBaseChar = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";

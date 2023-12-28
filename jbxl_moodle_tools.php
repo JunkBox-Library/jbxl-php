@@ -31,7 +31,6 @@ else {
 define('JBXL_MOODLE_TOOLS_VER', $jbxl_moodle_tools_ver);
 
 
-
 /*******************************************************************************
 
 // function  jbxl_get_block_instance_ids($name, $course_id)

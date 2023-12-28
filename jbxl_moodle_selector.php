@@ -22,7 +22,6 @@ define('JBXL_MOODLE_SELECTOR_VER', $jbxl_moodle_selector_ver);
 
 
 
-
 abstract class  jbxl_id_selector_base
 {
     var $include_html = 'jbxl_moodle_selector.html';
@@ -42,7 +41,6 @@ abstract class  jbxl_id_selector_base
     var $hasError = false;
     var $errorMsg = array();
 
-
     abstract protected function get_all_ids();                // id=>1(right)/0(left) の配列を返す
     abstract protected function get_record($id);
     abstract protected function set_record($id, $rec);
@@ -51,7 +49,6 @@ abstract class  jbxl_id_selector_base
     //
     abstract public    function get_name($id);
     abstract public    function sorting(array $ids);
-
 
     //
     public function __construct($html, $url, $ltitle, $rtitle) 
@@ -67,7 +64,6 @@ abstract class  jbxl_id_selector_base
     {
         self::__construct($html, $url, $ltitle, $rtitle);
     }
-
 
 
     public function  execute()
@@ -98,7 +94,6 @@ abstract class  jbxl_id_selector_base
     }
 
 
-
     public function  print_page() 
     {
         $this->ids = $this->sorting($this->ids);
@@ -116,7 +111,6 @@ abstract class  jbxl_id_selector_base
     }
 
 
-
     protected function  action_moveto_right()
     {
         foreach($this->select_left as $id) {
@@ -128,7 +122,6 @@ abstract class  jbxl_id_selector_base
     }
 
 
-
     protected function  action_moveto_left()
     {
         foreach($this->select_right as $id) {
@@ -138,7 +131,6 @@ abstract class  jbxl_id_selector_base
             $this->ids[$id] = false;
         }
     }
-
 
 
     public function  set_title($title)
