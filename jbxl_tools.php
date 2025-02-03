@@ -8,9 +8,10 @@
 //                2016/05/26
 //                2019/08/21
 //                2022/07/06
+//                2025/02/03
 //
 
-$jbxl_tools_ver = 2022070600;
+$jbxl_tools_ver = 2025020300;
 
 
 //
@@ -21,6 +22,9 @@ define('JBXL_TOOLS_VER', $jbxl_tools_ver);
 
 
 /****************************************************************************************
+//
+// function  jbxl_chng_timeformat($format)
+// function  jbxl_strftime($format, $timestamp=null)
 //
 // function  jbxl_to_subnetformats($strips)
 // function  jbxl_match_ipaddr($ip, $ipaddr_subnets)
@@ -33,6 +37,43 @@ define('JBXL_TOOLS_VER', $jbxl_tools_ver);
 // function  jbxl_make_url($serverURI, $portnum=0)
 //
 *****************************************************************************************/
+
+//
+// Change time format from strftime to IntlDateFormatter
+//
+function  jbxl_chng_timeformat($format)
+{
+    $f1 = array('/%Y/', '/%y/', '/%m/', '/%-m/', '/%B/', '/%b/', '/%h/', '/%d/', '/%-d/', '/%j/', '/%U/', '/%W/', '/%w/', '/%A/', '/%a/');
+    $t1 = array('yyyy', 'yy',   'MM',   'M',     'MMMM', 'MMM',  'MMM',  'dd',   'd',     'D',    'ww',   'ww',   'c',    'EEEE', 'EEE');
+
+    $f2 = array('/%H/', '/%-H/', '/%I/', '/%-I/', '/%p/', '/%M/', '/%-M/', '/%S/', '/%-S/', '/%Z/', '/%z/', '/%c/',                '/%X/',     '/%x/');
+    $t2 = array('HH',   'H',     'hh',   'h',     'a',    'mm',   'm',     'ss',   's',     'VV',   'xx',   'yyyy/MM/dd HH:mm:ss', 'HH:mm:ss', 'yyyy/MM/dd');
+
+    $nwfrmt = preg_replace($f1, $t1, $format);
+    $nwfrmt = preg_replace($f2, $t2, $nwfrmt);
+    return $nwfrmt;
+}
+
+
+//
+// PHP8.1 より非推奨となった strftime() の代替関数．jbxl_chng_timeformat() を使用．
+//
+function  jbxl_strftime($format, $timestamp=null)
+{
+    if (version_compare(PHP_VERSION, '8.1.0', '>=')) {
+        $dt = new DateTime();
+        if ($timestamp!=null) $dt->setTimestamp($timestamp);
+        //
+        $newformat = jbxl_chng_timeformat($format);
+        $formatter = new IntlDateFormatter(setlocale(LC_CTYPE, 0), IntlDateFormatter::NONE, 
+                                                                   IntlDateFormatter::NONE, null, IntlDateFormatter::GREGORIAN, $newformat);
+        return $formatter->format($dt);
+    }
+    else {
+        return strftime($format, $timestamp);
+    }
+}
+
 
 //
 // IPアドレスを "," または半角空白で区切って記述した文字列から，有効なIPアドレス
