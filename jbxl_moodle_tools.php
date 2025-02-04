@@ -551,7 +551,10 @@ function  jbxl_get_moodle_version()
 {
     global $CFG;
 
-    if      ($CFG->version>=2023100900) return 4.3;
+    if      ($CFG->version>=2024102100) return 4.6;
+    else if ($CFG->version>=2024100700) return 4.5;
+    else if ($CFG->version>=2024042200) return 4.4;
+    else if ($CFG->version>=2023100900) return 4.3;
     else if ($CFG->version>=2023042400) return 4.2;
     else if ($CFG->version>=2022112800) return 4.1;
     else if ($CFG->version>=2022041900) return 4.0;
