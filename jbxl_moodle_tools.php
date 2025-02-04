@@ -73,9 +73,14 @@ define('JBXL_MOODLE_TOOLS_VER', $jbxl_moodle_tools_ver);
 //////////////////////////////////////////////////////////////////////////
 //
 
-function  jbxl_print_error($message, $mname=null, $url=null)
+function  jbxl_print_error($message, $mname='', $url='')
 {
-    throw new \moodle_exception($message, $mname, $url);
+    if (jbxl_get_moodle_version() >= 4.1) {
+        throw new \moodle_exception($message, $mname, $url);
+    }
+    else {
+        print_error($message, $mname=, $url);
+    }
     exit;
 }
 
