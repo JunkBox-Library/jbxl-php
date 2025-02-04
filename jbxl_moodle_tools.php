@@ -16,7 +16,8 @@ defined('MOODLE_INTERNAL') || die();
 //$jbxl_moodle_tools_ver = 2018091900;
 //$jbxl_moodle_tools_ver = 2019082000;
 //$jbxl_moodle_tools_ver = 2022070600;
-$jbxl_moodle_tools_ver   = 2023113000;
+//$jbxl_moodle_tools_ver = 2023113000;
+$jbxl_moodle_tools_ver   = 2025020400;
 
 //
 if (defined('JBXL_MOODLE_TOOLS_VER') or defined('_JBXL_MOODLE_TOOLS')) {
@@ -32,6 +33,8 @@ define('JBXL_MOODLE_TOOLS_VER', $jbxl_moodle_tools_ver);
 
 
 /*******************************************************************************
+
+// function  jbxl_print_error($message, $mname, $url)
 
 // function  jbxl_get_block_instance_ids($name, $course_id)
 
@@ -65,6 +68,18 @@ define('JBXL_MOODLE_TOOLS_VER', $jbxl_moodle_tools_ver);
 // function  jbxl_can_use_html_editor()
 
 *******************************************************************************/
+
+
+//////////////////////////////////////////////////////////////////////////
+//
+
+function  jbxl_print_error($message, $mname, $url)
+{
+    throw new \moodle_exception($message, $mname, $url);
+    exit;
+}
+
+
 
 //////////////////////////////////////////////////////////////////////////
 //
