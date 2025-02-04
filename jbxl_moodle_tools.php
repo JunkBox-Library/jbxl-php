@@ -73,7 +73,7 @@ define('JBXL_MOODLE_TOOLS_VER', $jbxl_moodle_tools_ver);
 //////////////////////////////////////////////////////////////////////////
 //
 
-function  jbxl_print_error($message, $mname, $url)
+function  jbxl_print_error($message, $mname=null, $url=null)
 {
     throw new \moodle_exception($message, $mname, $url);
     exit;
