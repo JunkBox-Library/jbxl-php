@@ -79,7 +79,7 @@ function  jbxl_print_error($message, $mname='', $url='')
         throw new \moodle_exception($message, $mname, $url);
     }
     else {
-        print_error($message, $mname=, $url);
+        print_error($message, $mname, $url);
     }
     exit;
 }
