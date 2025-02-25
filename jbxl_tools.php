@@ -65,9 +65,16 @@ function  jbxl_strftime($format, $timestamp=null)
         if ($timestamp!=null) $dt->setTimestamp($timestamp);
         //
         $newformat = jbxl_chng_timeformat($format);
-        $formatter = new IntlDateFormatter(setlocale(LC_CTYPE, 0), IntlDateFormatter::NONE, 
-                                                                   IntlDateFormatter::NONE, null, IntlDateFormatter::GREGORIAN, $newformat);
-        return $formatter->format($dt);
+
+        $locale = setlocale(LC_ALL, locale_get_default());
+        //$formatter = new IntlDateFormatter(setlocale(LC_CTYPE, 0), IntlDateFormatter::NONE, 
+        $formatter = new IntlDateFormatter($locale, IntlDateFormatter::NONE, 
+                                                    IntlDateFormatter::NONE, null, IntlDateFormatter::GREGORIAN, $newformat);
+        try {
+            return $formatter->format($dt);
+        } catch(\Error $e) {
+            //print_r($e);
+        }
     }
     else {
         return strftime($format, $timestamp);
